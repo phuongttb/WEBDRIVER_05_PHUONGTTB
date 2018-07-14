@@ -27,9 +27,7 @@ public class Topic_01_CheckEnvironment {
 		WebElement element = driver.findElement(By.id("tripi-holiday-from-airport-value"));
 		element.sendKeys("Hồ chí Minh");
 		System.out.println("Test: "+element.getText());
-		WebElement element = driver.findElement(By.id("tripi-holiday-from-airport-value"));
-		element.sendKeys("Hồ chí Minh");
-		System.out.println("Test: "+element.getText());
+	
 		try {
 			Thread.sleep(10000);
 		} catch (InterruptedException e) {
