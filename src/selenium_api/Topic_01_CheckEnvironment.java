@@ -53,7 +53,7 @@ public class Topic_01_CheckEnvironment {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//		click search button 
+//		click search button  1
 		WebElement searchbutton = driver.findElement(By.xpath(".//*[@id='homepage-tripi-search-form']/form/div[6]/button"));
         searchbutton.click();
 
