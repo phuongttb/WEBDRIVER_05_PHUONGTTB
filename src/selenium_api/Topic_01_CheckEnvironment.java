@@ -16,8 +16,8 @@ import org.testng.annotations.Test;
 public class Topic_01_CheckEnvironment {
 	WebDriver driver;
 
-	
-	@Test
+
+	@Test(priority=1)
 	public void TC_01_CheckUrlAndTitle() throws InterruptedException {
 		System.out.println("Check homepage title");
 		String homePageTitle = driver.getTitle();
@@ -44,8 +44,8 @@ public class Topic_01_CheckEnvironment {
 		WebElement eToAirport1 = driver.findElement(By.xpath(".//*[@id='tripi-holiday-departure-date']"));
 		eToAirport1.click();
 		
-		selectDate("18");
-		selectDate("22");
+		selectDate("20");
+		selectDate("23");
 
 		try {
 			Thread.sleep(10000);
@@ -53,11 +53,14 @@ public class Topic_01_CheckEnvironment {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//		click search button  1
+//		click search button
 		WebElement searchbutton = driver.findElement(By.xpath(".//*[@id='homepage-tripi-search-form']/form/div[6]/button"));
         searchbutton.click();
 
         Thread.sleep(15000);
+        List<WebElement> hotels = driver.findElements(By.className("hsr-item"));
+        System.out.println(hotels.size());
+        Assert.assertEquals(true, hotels.size()>0);
 	}
 	
 	public void selectDate(String date) {
