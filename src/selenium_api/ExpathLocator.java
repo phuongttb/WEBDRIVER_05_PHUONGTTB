@@ -53,28 +53,55 @@ public class ExpathLocator {
 	public void TC_03_LoginEmpt() {
 
 		driver.findElement(By.xpath("//div[@class='footer']//a[contains(text(),'My Account')]")).click();
-		// let blank username and password
+		// let blank user name and password
 		driver.findElement(By.xpath("//button[@id='send2']")).click();
 		String errormssage = driver.findElement(By.xpath("//div[@id='advice-required-entry-email']")).getText();
-		Assert.assertEquals("This is a required field", errormssage);
+		 Assert.assertEquals("This is a required field.", errormssage);
 	}
+	
+	@Test
+	public void TC_04_Loginwithsemailinvalid() {
 
+//		String url = driver.getCurrentUrl();
+//		Assert.assertEquals(url, "http://live.guru99.com/");
+//		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+//		driver.findElement(By.xpath("//div[@class='footer'] and //a[@title='My Account']")).click();
+		driver.findElement(By.xpath("//input[@id='email']")).sendKeys("123434234@12312.123123");
+		driver.findElement(By.xpath("//button[@id='send2']")).click();
+		String errormessage=driver.findElement(By.xpath("//div[@id='advice-validate-email-email']")).getText();
+		Assert.assertEquals("Please enter a valid email address. For example johndoe@domain.com.", errormessage);
+	}
+	
+	@Test
+	public void TC_04_Loginwithpasswordincorrect() {
+
+//		String url = driver.getCurrentUrl();
+//		Assert.assertEquals(url, "http://live.guru99.com/");
+//		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+//		driver.findElement(By.xpath("//div[@class='footer'] and //a[@title='My Account']")).click();
+		driver.findElement(By.xpath("//input[@id='email']")).sendKeys("automation@gmail.com");
+		driver.findElement(By.xpath("//input[@id='pass']")).sendKeys("123");
+		driver.findElement(By.xpath("//button[@id='send2']")).click();
+		String errormessage=driver.findElement(By.xpath("advice-validate-password-pass")).getText();
+		Assert.assertEquals("Please enter 6 or more characters without leading or trailing spaces.", errormessage);
+	}
+	
 	@Test
 	public void TC_05_Register() {
 
 		// Click vào link "My Account" để tới trang đăng nhập
-		driver.findElement(By.xpath(".//*[@id='top']/body/div/div/div[3]/div/div[4]/ul/li[1]/a")).click();
-		driver.findElement(By.xpath("//div[@class='footer']//a[contains(text(),'My Account')]")).click();
-		driver.findElement(By.xpath("//a[@title='Create an Account' and @class='button']")).click();
-		driver.findElement(By.id("firstname")).sendKeys("Tran");
-		driver.findElement(By.id("middlename")).sendKeys("Bich");
-		driver.findElement(By.id("lastname")).sendKeys("Phuong");
-		driver.findElement(By.id("email")).sendKeys("bichphuong1209@gmail.com");
-		driver.findElement(By.id("password")).sendKeys("123456");
-		driver.findElement(By.id("confirmation")).sendKeys("123456");
+//		driver.findElement(By.xpath(".//*[@id='top']/body/div/div/div[3]/div/div[4]/ul/li[1]/a")).click();
+//		driver.findElement(By.xpath("//div[@class='footer']//a[contains(text(),'My Account')]")).click();
+//		driver.findElement(By.xpath("//a[@title='Create an Account' and @class='button']")).click();
+//		driver.findElement(By.id("firstname")).sendKeys("Tran");
+//		driver.findElement(By.id("middlename")).sendKeys("Bich");
+//		driver.findElement(By.id("lastname")).sendKeys("Phuong");
+//		driver.findElement(By.id("email")).sendKeys("bichphuong1209@gmail.com");
+//		driver.findElement(By.id("password")).sendKeys("123456");
+//		driver.findElement(By.id("confirmation")).sendKeys("123456");
 
-		driver.findElement(By.xpath("//div[@class='links']//a[@title='Log Out']")).click();
-		driver.navigate().to("http://live.guru99.com/index.php/");
+//		driver.findElement(By.xpath("//div[@class='links']//a[@title='Log Out']")).click();
+//		driver.navigate().to("http://live.guru99.com/index.php/");
 	}
 
 	@AfterClass
