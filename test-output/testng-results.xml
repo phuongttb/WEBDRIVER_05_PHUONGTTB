@@ -1,25 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="48675" started-at="2018-07-19T10:18:54Z" finished-at="2018-07-19T10:19:43Z">
+  <suite name="Parameterization Test Suite" duration-ms="16956" started-at="2018-09-16T16:48:45Z" finished-at="2018-09-16T16:49:02Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="48675" started-at="2018-07-19T10:18:54Z" finished-at="2018-07-19T10:19:43Z">
-      <class name="selenium_api.Topic_01_CheckEnvironment">
-        <test-method status="PASS" signature="beforeClass()[pri:0, instance:selenium_api.Topic_01_CheckEnvironment@2ac1fdc4]" name="beforeClass" is-config="true" duration-ms="13904" started-at="2018-07-19T17:18:54Z" finished-at="2018-07-19T17:19:08Z">
+    <test name="Testing Parameterization" duration-ms="16956" started-at="2018-09-16T16:48:45Z" finished-at="2018-09-16T16:49:02Z">
+      <class name="selenium_api.Topic02_ExpathLocator">
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:selenium_api.Topic02_ExpathLocator@73035e27]" name="beforeClass" is-config="true" duration-ms="8864" started-at="2018-09-16T23:48:45Z" finished-at="2018-09-16T23:48:54Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method status="PASS" signature="TC_01_CheckUrlAndTitle()[pri:1, instance:selenium_api.Topic_01_CheckEnvironment@2ac1fdc4]" name="TC_01_CheckUrlAndTitle" duration-ms="34077" started-at="2018-07-19T17:19:08Z" finished-at="2018-07-19T17:19:42Z">
+        <test-method status="PASS" signature="TC_03_Loginwithsemailinvalid()[pri:0, instance:selenium_api.Topic02_ExpathLocator@73035e27]" name="TC_03_Loginwithsemailinvalid" duration-ms="3823" started-at="2018-09-16T23:48:54Z" finished-at="2018-09-16T23:48:58Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TC_01_CheckUrlAndTitle -->
-        <test-method status="PASS" signature="afterClass()[pri:0, instance:selenium_api.Topic_01_CheckEnvironment@2ac1fdc4]" name="afterClass" is-config="true" duration-ms="680" started-at="2018-07-19T17:19:42Z" finished-at="2018-07-19T17:19:43Z">
+        </test-method> <!-- TC_03_Loginwithsemailinvalid -->
+        <test-method status="PASS" signature="TC_05_Register(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:5, instance:selenium_api.Topic02_ExpathLocator@73035e27]" name="TC_05_Register" duration-ms="3601" started-at="2018-09-16T23:48:58Z" finished-at="2018-09-16T23:49:01Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Tran]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Bich Phuong]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Phuong]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[bichphuong120986@gmail.com]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[123456]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[123456]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[Thank you for registering with Main Website Store.]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_05_Register -->
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:selenium_api.Topic02_ExpathLocator@73035e27]" name="afterClass" is-config="true" duration-ms="656" started-at="2018-09-16T23:49:01Z" finished-at="2018-09-16T23:49:02Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
-      </class> <!-- selenium_api.Topic_01_CheckEnvironment -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+      </class> <!-- selenium_api.Topic02_ExpathLocator -->
+    </test> <!-- Testing Parameterization -->
+  </suite> <!-- Parameterization Test Suite -->
 </testng-results>

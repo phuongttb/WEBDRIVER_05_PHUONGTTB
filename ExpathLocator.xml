@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Parameterization Test Suite">
+	<test name="Testing Parameterization">
+		<classes>
+			<class name="selenium_api.Topic02_ExpathLocator">
+				<methods>
+			
+					<include name="TC_01_CheckURTitle">				
+					</include>
+					<include name="TC_02_LoginEmpty">
+						<parameter name='username' value="0988100942"></parameter>
+						<parameter name='password' value="123456"></parameter>
+						<parameter name='orderid' value="5920"></parameter>					
+					</include>
+				
+						<include name="TC_03_Loginwithsemailinvalid">		
+					</include>
+				
+					<include name="TC_04_Loginwithpasswordincorrect">	
+						<parameter name='email' value="automation@gmail.com"></parameter>
+						<parameter name='password' value="123456"></parameter>	
+					</include>
+					
+					<include name="TC_05_Register">
+						<parameter name='first_name' value="Tran"></parameter>
+						<parameter name='middle_name' value="Bich Phuong"></parameter>
+						<parameter name='last_name' value="Phuong"></parameter>	
+						<parameter name='email' value="bichphuong120989@gmail.com"></parameter>
+						<parameter name='password' value="123456"></parameter>		
+						<parameter name='confirmation' value="123456"></parameter>	
+						<parameter name='successmsg' value="Thank you for registering with Main Website Store."></parameter>		
+					</include>
+				</methods>						
+				
+			</class>
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->
