@@ -3,13 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="selenium_api.Topic_01_CheckEnvironment">
+      <class name="selenium_api.Topic04_TextboxTextAreaDropdownlist">
         <methods>
-          <include name="TC_01_CheckUrlAndTitle"/>
+          <include name="Testscript_01"/>
           <include name="afterClass"/>
           <include name="beforeClass"/>
         </methods>
-      </class> <!-- selenium_api.Topic_01_CheckEnvironment -->
+      </class> <!-- selenium_api.Topic04_TextboxTextAreaDropdownlist -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

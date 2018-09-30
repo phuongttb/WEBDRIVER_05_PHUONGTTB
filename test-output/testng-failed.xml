@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
-  <test name="Default test(failed)">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Parameterization Test Suite]">
+  <test name="Testing Parameterization(failed)">
     <classes>
-      <class name="selenium_api.Topic_01_CheckEnvironment">
+      <class name="selenium_api.Topic04_TextboxTextAreaDropdownlist">
         <methods>
-          <include name="TC_01_CheckUrlAndTitle"/>
           <include name="afterClass"/>
+          <include name="Testscript_02"/>
           <include name="beforeClass"/>
         </methods>
-      </class> <!-- selenium_api.Topic_01_CheckEnvironment -->
+      </class> <!-- selenium_api.Topic04_TextboxTextAreaDropdownlist -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- Testing Parameterization(failed) -->
+</suite> <!-- Failed suite [Parameterization Test Suite] -->
