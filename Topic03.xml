@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Parameterization Test Suite">
+	<test name="Testing Parameterization">
+		<classes>
+			<class name="selenium_api.Topic03_WebElement_Webbrowser">
+				<methods>
+		
+					<include name="Testscript_01">
+						<parameter name='email' value="bichphuong1209@gmail.com"></parameter>
+						<parameter name='education' value="Becholor"></parameter>			
+					</include>
+				
+					
+				</methods>						
+				
+			</class>
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->

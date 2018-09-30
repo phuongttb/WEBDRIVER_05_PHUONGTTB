@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Parameterization Test Suite">
+	<test name="Testing Parameterization">
+		<classes>
+			<class name="selenium_api.Topic04_TextboxTextAreaDropdownlist">
+				<methods>
+	<!--
+					<include name="Testscript_01">
+						<parameter name='jobdrop1' value="Automation Tester"></parameter>
+						<parameter name='jobdrop2' value="Manual"></parameter>
+						<parameter name='jobdrop3' value="Mobile Tester "></parameter>
+					</include>
+				-->
+					<include name="Testscript_02">
+					</include>
+				</methods>						
+				
+			</class>
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->
