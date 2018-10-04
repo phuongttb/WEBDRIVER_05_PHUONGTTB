@@ -16,8 +16,20 @@
 						<parameter name='valuedrop' value="19"></parameter>
 					</include>
 					<include name="Testscript_02">
-						<parameter name='username' value="bichphuong1209@gmail.com"></parameter>
-						<parameter name='password' value="123456"></parameter>
+						<parameter name='username' value="mngr155533"></parameter>
+						<parameter name='password' value="aqAtAda"></parameter>
+						<parameter name='customer_name' value="Tran Bich Phuong"></parameter>
+						<parameter name='gender' value="Nữ"></parameter>
+						<parameter name='dob' value="12/09/1985"></parameter>
+						<parameter name='address' value="Từ Sơn - Bắc Ninh"></parameter>
+						<parameter name='city' value="Bắc Ninh"></parameter>
+						<parameter name='state' value="VN"></parameter>
+						<parameter name='pin' value="123456"></parameter>
+						<parameter name='mobile_phone' value="0942127129"></parameter>
+						<parameter name='email' value="bichphuong1209@gmail.com"></parameter>
+						<parameter name='password1' value="aqAtAda"></parameter>
+						<parameter name='account_no' value="123456789"></parameter>
+					
 					</include>
 				</methods>						
 				
