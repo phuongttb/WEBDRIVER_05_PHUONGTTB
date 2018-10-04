@@ -77,15 +77,38 @@ public class Topic04_TextboxTextAreaDropdownlist {
 	}
 	
 	@Test()
-	@Parameters({ "username","password" })
-	public void Testscript_03(String username , String password) throws InterruptedException {
+	@Parameters({ "username","password","customer_name","gender","dob","address","city","state","pin","mobile_phone" ,"email","password1" ,"account_no"})
+	public void Testscript_03(String username , String password,String customer_name, String gender,String dob, String address, String city, String state, String pin, String mobile_phone, String email, String password1 ,String account_no) throws InterruptedException {
 
 		driver.get("http://demo.guru99.com/v4");
 		driver.findElement(By.xpath("input[@name='uid']")).sendKeys(username);
 		driver.findElement(By.xpath("input[@name='password']")).sendKeys(password);
 		driver.findElement(By.xpath("//input[@name='btnLogin']")).click();
-		//assert.assertTrue(driver.findElement(By.xpath("//marquee[text()=\"Welcome To Manager's Page of Guru99 Bank\"]")).isDisplayed());
+		assert.assertTrue(driver.findElement(By.xpath("//marquee[contains(text(),'Welcome To Manager's Page of Guru99 Bank')]")),"Welcome To Manager's Page of Guru99 Bank"));
+		driver.findElement(By.xpath("//ul[@class='menusubnav']/li/a[contains(text(),'New Customer')]")).click();
 		
+		WebElement custname=driver.findElement(By.xpath("//input[@name='name']"));
+				custname.sendKeys(customer_name);
+		driver.findElement(By.xpath("//input[@name='rad1']")).isSelected();
+		driver.findElement(By.xpath("//input[@id='dob']")).sendKeys(dob);
+		
+		WebElement addres=driver.findElement(By.xpath("//textarea[@name='addr']"));
+		 addres.sendKeys(address);
+		driver.findElement(By.xpath("//input[@name='city']")).sendKeys(city);
+		driver.findElement(By.xpath("//input[@name='state']")).sendKeys(state);
+		driver.findElement(By.xpath("//input[@name='pinno']")).sendKeys(pin);
+		driver.findElement(By.xpath("//input[@name='telephoneno']")).sendKeys(mobile_phone);
+		driver.findElement(By.xpath("//input[@name='emailid']")).sendKeys(email);
+		driver.findElement(By.xpath("//input[@name='password']")).sendKeys(password1);
+		driver.findElement(By.xpath("//input[@name='sub']")).click();
+		driver.findElement(By.xpath("//table[@id='customer']/tr/td/following-sibling::td")).getText();
+		driver.findElement(By.xpath("//ul[@class='menusubnav']/a[contains(text),'Edit Account')]")).click();
+		driver.findElement(By.xpath("//input[@name='accountno']")).sendKeys(account_no);
+		driver.findElement(By.xpath("//input[@name='AccSubmit']")).click();
+		
+		
+		
+			
 	}
 
 	@AfterClass
