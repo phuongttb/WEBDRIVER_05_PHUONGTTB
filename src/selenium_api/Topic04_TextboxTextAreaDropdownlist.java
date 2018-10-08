@@ -1,7 +1,5 @@
 package selenium_api;
 
-import static org.junit.Assert.assertTrue;
-
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -40,17 +38,12 @@ public class Topic04_TextboxTextAreaDropdownlist {
 
 		Assert.assertFalse(job_01.isMultiple());
 		job_01.selectByVisibleText(jobdrop1);
+		System.out.print(job_01.getFirstSelectedOption().getText());
 		Assert.assertEquals(job_01.getFirstSelectedOption().getText(), jobdrop1);
-
 		job_01.selectByValue(jobdrop2);
 		Assert.assertEquals(job_01.getFirstSelectedOption().getAttribute("value"), jobdrop2);
-
-//		job_01.selectByIndex(3);
-//		Assert.assertEquals(job_01.getFirstSelectedOption().getText(),
-//				driver.findElement(By.xpath("//*[@value=' mobile ']")).getText());
-
+		job_01.selectByIndex(3);
 		int count = job_01.getOptions().size();
-
 		Assert.assertEquals(count, 5);
 
 	}
@@ -67,53 +60,89 @@ public class Topic04_TextboxTextAreaDropdownlist {
 		selectvalue.click();
 
 		Thread.sleep(3000);
-		WebElement span = driver
-				.findElement(By.xpath("//span[@id='number-button']"));
-		
-		System.out.println("da chon thanh cong gia tri:" + selectvalue.getText() + " =" + span.getText() + "-" +valuedrop);
-		Assert.assertEquals( span.getText(),valuedrop);
+		WebElement span = driver.findElement(By.xpath("//span[@id='number-button']"));
+
+		System.out.println(
+				"da chon thanh cong gia tri:" + selectvalue.getText() + " =" + span.getText() + "-" + valuedrop);
+		Assert.assertEquals(span.getText(), valuedrop);
 		Thread.sleep(4000);
 
 	}
-	
-	@Test()
-	@Parameters({ "username","password","customer_name","gender","dob","address","city","state","pin","mobile_phone" ,"email","password1" ,"account_no"})
-	public void Testscript_03(String username , String password,String customer_name, String gender,String dob, String address, String city, String state, String pin, String mobile_phone, String email, String password1 ,String account_no) throws InterruptedException {
 
-		driver.get("http://demo.guru99.com/v4");
-		driver.findElement(By.xpath("input[@name='uid']")).sendKeys(username);
-		driver.findElement(By.xpath("input[@name='password']")).sendKeys(password);
-		driver.findElement(By.xpath("//input[@name='btnLogin']")).click();
-		assert.assertTrue(driver.findElement(By.xpath("//marquee[contains(text(),'Welcome To Manager's Page of Guru99 Bank')]")),"Welcome To Manager's Page of Guru99 Bank"));
-		driver.findElement(By.xpath("//ul[@class='menusubnav']/li/a[contains(text(),'New Customer')]")).click();
-		
-		WebElement custname=driver.findElement(By.xpath("//input[@name='name']"));
-				custname.sendKeys(customer_name);
-		driver.findElement(By.xpath("//input[@name='rad1']")).isSelected();
-		driver.findElement(By.xpath("//input[@id='dob']")).sendKeys(dob);
-		
-		WebElement addres=driver.findElement(By.xpath("//textarea[@name='addr']"));
-		 addres.sendKeys(address);
-		driver.findElement(By.xpath("//input[@name='city']")).sendKeys(city);
-		driver.findElement(By.xpath("//input[@name='state']")).sendKeys(state);
-		driver.findElement(By.xpath("//input[@name='pinno']")).sendKeys(pin);
-		driver.findElement(By.xpath("//input[@name='telephoneno']")).sendKeys(mobile_phone);
-		driver.findElement(By.xpath("//input[@name='emailid']")).sendKeys(email);
-		driver.findElement(By.xpath("//input[@name='password']")).sendKeys(password1);
-		driver.findElement(By.xpath("//input[@name='sub']")).click();
-		driver.findElement(By.xpath("//table[@id='customer']/tr/td/following-sibling::td")).getText();
-		driver.findElement(By.xpath("//ul[@class='menusubnav']/a[contains(text),'Edit Account')]")).click();
-		driver.findElement(By.xpath("//input[@name='accountno']")).sendKeys(account_no);
-		driver.findElement(By.xpath("//input[@name='AccSubmit']")).click();
-		
-		
-		
+	@Test()
+		@Parameters({ "username","password","customer_name","gender","dob","address","city","state","pin","mobile_phone" ,"email","password1" ,"account_no","address_edit" ,"city_edit"})
+		public void Testscript_03(String username , String password,String customer_name, String gender,String dob, String address, String city, String state, String pin, String mobile_phone, String email, String password1 ,String account_no ,String address_edit ,String city_edit) throws InterruptedException {
+
+			driver.get("http://demo.guru99.com/v4");
+			driver.findElement(By.xpath("input[@name='uid']")).sendKeys(username);
+			driver.findElement(By.xpath("input[@name='password']")).sendKeys(password);
+			driver.findElement(By.xpath("//input[@name='btnLogin']")).click();
 			
-	}
+			// VERIFY CUSTOMER CREATED SUCCESS
+			WebElement createdSuccessMsg = driver.findElement(By.xpath("//p[@class='heading3' and text()='Customer Registered Successfully!!!']"));
+			createdSuccessMsg.isDisplayed();
+			Assert.assertTrue(createdSuccessMsg.isDisplayed());
+			driver.findElement(By.xpath("//ul[@class='menusubnav']/li/a[contains(text(),'New Customer')]")).click();
+			
+			WebElement custname=driver.findElement(By.xpath("//input[@name='name']"));
+					custname.sendKeys(customer_name);
+			driver.findElement(By.xpath("//input[@name='rad1']")).isSelected();
+			driver.findElement(By.xpath("//input[@id='dob']")).sendKeys(dob);
+			
+			WebElement addres=driver.findElement(By.xpath("//textarea[@name='addr']"));
+			 addres.sendKeys(address);
+			driver.findElement(By.xpath("//input[@name='city']")).sendKeys(city);
+			driver.findElement(By.xpath("//input[@name='state']")).sendKeys(state);
+			driver.findElement(By.xpath("//input[@name='pinno']")).sendKeys(pin);
+			driver.findElement(By.xpath("//input[@name='telephoneno']")).sendKeys(mobile_phone);
+			driver.findElement(By.xpath("//input[@name='emailid']")).sendKeys(email);
+			driver.findElement(By.xpath("//input[@name='password']")).sendKeys(password1);
+			driver.findElement(By.xpath("//input[@name='sub']")).click();
+			
+			// GET CUSTOMER ID TEXT -> NEXT TESTCASE
+			driver.findElement(By.xpath("//table[@id='customer']/tr/td/following-sibling::td")).getText();
+			
+			// VERIFY CUSTOMER INFORMATION CREATED
+			Assert.assertEquals(driver.findElement(By.xpath("//td[text()='Customer Name']/following-sibling::td")).getText(), customer_name);
+			Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'Gender')]//following-sibling::td")).getText(), gender);
+			Assert.assertEquals(driver.findElement(By.xpath("//td[text()='Birthdate']/following-sibling::td")).getText(), dob);
+			Assert.assertEquals(driver.findElement(By.xpath("//td[text()='Address']/following-sibling::td")).getText(), address);
+			Assert.assertEquals(driver.findElement(By.xpath("//td[text()='City']/following-sibling::td")).getText(), city);
+			Assert.assertEquals(driver.findElement(By.xpath("//td[text()='State']/following-sibling::td")).getText(), state);
+			Assert.assertEquals(driver.findElement(By.xpath("//td[text()='Pin']/following-sibling::td")).getText(), pin);
+			Assert.assertEquals(driver.findElement(By.xpath("//td[text()='Mobile No.']/following-sibling::td")).getText(), mobile_phone);
+			Assert.assertEquals(driver.findElement(By.xpath("//td[text()='Email']/following-sibling::td")).getText(), email);
+			
+			//EDIT CUSTOMER
+			driver.findElement(By.xpath("//ul[@class='menusubnav']/a[contains(text),'Edit Account')]")).click();
+			driver.findElement(By.xpath("//input[@name='accountno']")).sendKeys(account_no);
+			driver.findElement(By.xpath("//input[@name='AccSubmit']")).click();
+			
+			//Verify giá trị tại 2 field: Customer Name và Address đúng với dữ liệu khi tạo mới New Customer tại Step 04
+			Assert.assertEquals(driver.findElement(By.xpath("//input[@name='name']")).getAttribute("value"), customer_name);
+			Assert.assertEquals(driver.findElement(By.xpath("//td[text()='Address']/following-sibling::td")).getText(), address);
+			
+			//EDIT CUSTOMER SUCCESSFULLY
+			WebElement addressedit=driver.findElement(By.xpath("//textarea[@name='addr']"));
+			addressedit.clear();
+			addressedit.sendKeys(address_edit);
+			Assert.assertEquals(driver.findElement(By.xpath("//textarea[@name='addr']")).getText(), address_edit);
+			WebElement editcity=driver.findElement(By.xpath("//input[@name='city']"));
+			editcity.clear();
+			editcity.sendKeys(city_edit);
+			Assert.assertEquals(driver.findElement(By.xpath("//input[@name='city']")).getText(), city_edit);
+			
+			//DISPLAY MESSAGE WHEN EDIT CUSTOMER INFOR
+			WebElement editSuccessMsg = driver.findElement(By.xpath("//p[@class='heading3' and text()='Customer Registered Successfully!!!']"));
+			editSuccessMsg.isDisplayed();
+			Assert.assertTrue(editSuccessMsg.isDisplayed());
+			
+			// VERIFY CUSTOMER INFORMATION EDITED
+			
+		}
 
 	@AfterClass
 	public void afterClass() {
 		driver.quit();
 	}
-
 }
