@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Parameterization Test Suite">
+	<test name="Testing Parameterization">
+		<classes>
+			<class name="selenium_api.Topic_05_RadioButton_Checkbox_Alert">
+				<methods>
+
+					<include name="Testscript_01_JavascriptExecutorcode">
+					</include>
+			
+					<include name="Testscript_02_JavascriptExecutorcode">
+					</include>
+						
+					<include name="Testscript_03_JavascriptExecutorcode">
+					</include>
+				</methods>						
+				
+			</class>
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->
