@@ -138,6 +138,8 @@ public class Topic04_TextboxTextAreaDropdownlist {
 			Assert.assertTrue(editSuccessMsg.isDisplayed());
 			
 			// VERIFY CUSTOMER INFORMATION EDITED
+			Assert.assertEquals(driver.findElement(By.xpath("//td[text()='Address']/following-sibling::td")).getText(), address_edit);
+			Assert.assertEquals(driver.findElement(By.xpath("//td[text()='City']/following-sibling::td")).getText(), city_edit);
 			
 		}
 
