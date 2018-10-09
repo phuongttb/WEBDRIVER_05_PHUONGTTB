@@ -3,7 +3,7 @@
 <suite name="Parameterization Test Suite">
 	<test name="Testing Parameterization">
 		<classes>
-			<class name="selenium_api.Topic04_TextboxTextAreaDropdownlist">
+			<class name="selenium_api.Topic_04_TextboxTextAreaDropdownlist">
 				<methods>
 
 					<include name="Testscript_01">
@@ -28,7 +28,9 @@
 						<parameter name='mobile_phone' value="0942127129"></parameter>
 						<parameter name='email' value="bichphuong1209@gmail.com"></parameter>
 						<parameter name='password1' value="aqAtAda"></parameter>
-						<parameter name='account_no' value="123456789"></parameter>
+						<parameter name='account_no' value="49988"></parameter>
+						<parameter name='address_edit' value="81 A Trần Quốc toản"></parameter>
+						<parameter name='city_edit' value="Hà Nội"></parameter>
 					
 					</include>
 				</methods>						
