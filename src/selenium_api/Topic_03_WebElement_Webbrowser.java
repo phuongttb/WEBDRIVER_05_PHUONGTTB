@@ -11,7 +11,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class Topic03_WebElement_Webbrowser {
+public class Topic_03_WebElement_Webbrowser {
 
 	// Ini driver
 	WebDriver driver;

@@ -11,7 +11,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class Topic02_ExpathLocator {
+public class Topic_02_ExpathLocator {
 
 	// Ini driver
 	WebDriver driver;
