@@ -5,14 +5,21 @@
 		<classes>
 			<class name="selenium_api.Topic_05_RadioButton_Checkbox_Alert">
 				<methods>
-
+<!--
 					<include name="Testscript_01_JavascriptExecutorcode">
 					</include>
 			
 					<include name="Testscript_02_JavascriptExecutorcode">
 					</include>
-						
-					<include name="Testscript_03_JavascriptExecutorcode">
+						 -->
+					<include name="Testscript_04_Acceptalert">
+					</include>
+					<include name="Testscript_05_Cancelalert">
+					</include>
+					<include name="Testscript_06_InputText">
+					<parameter name='name' value="tran phuong"></parameter>
+					</include>
+					<include name="Testscript_07_LoginVerifymessage">
 					</include>
 				</methods>						
 				
