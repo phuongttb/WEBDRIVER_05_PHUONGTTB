@@ -42,8 +42,7 @@ public class Topic_05_RadioButton_Checkbox_Alert {
 		Assert.assertEquals(actual, expected);
 
 		// Click vào link CREATE AN ACCOUNT dưới footer
-		WebElement accountlink = driver
-				.findElement(By.xpath("//a[@class='button']//span[text()='Create an Account']"));
+		WebElement accountlink = driver.findElement(By.xpath("//a[@class='button']//span[text()='Create an Account']"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", accountlink);
 		System.out.println("Current URL" + driver.getCurrentUrl());
 		String actual1 = driver.getCurrentUrl();
@@ -52,14 +51,43 @@ public class Topic_05_RadioButton_Checkbox_Alert {
 	}
 
 	// Test Script 02
-		@Test()
-		public void Testscript_02_JavascriptExecutorcode() throws InterruptedException {
-			driver.get("http://demos.telerik.com/kendo-ui/styling/checkboxes");
-			driver.findElement(By.xpath("//ul[@class='fieldlist']//input[@type='checkbox']/following-sibling::label")).click();
-			Assert.assertTrue(driver.findElement(By.xpath("//ul[@class='fieldlist']//input[@type='checkbox']/label[text()='Dual-zone air conditioning']")).isSelected());
-
+	@Test()
+	public void Testscript_02_JavascriptExecutorcode() throws InterruptedException {
+		driver.get("http://demos.telerik.com/kendo-ui/styling/checkboxes");
+		driver.findElement(By.cssSelector("#example > div > ul > li:nth-child(5) > label")).click();
+		Assert.assertFalse(
+				driver.findElement(By.cssSelector("#example > div > ul > li:nth-child(5) > label")).isSelected());
+		WebElement equitmentcheckbox = driver
+				.findElement(By.cssSelector("#example > div > ul > li:nth-child(5) > label"));
+		if (!equitmentcheckbox.isSelected()) {
+			equitmentcheckbox.click();
 		}
+	}
 
+	// Test Script 03
+	@Test()
+	public void Testscript_03_JavascriptExecutorcode() throws InterruptedException {
+		driver.get("http://demos.telerik.com/kendo-ui/styling/radios");
+		WebElement radioButton = driver
+				.findElement(By.xpath("//label[text()='2.0 Petrol, 147kW']/preceding-sibling::input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", radioButton);
+		Assert.assertTrue(driver.findElement(By.xpath("//label[text()='2.0 Petrol, 147kW']/preceding-sibling::input"))
+				.isSelected());
+		WebElement equitmentradiobtn = driver
+				.findElement(By.xpath("//label[text()='2.0 Petrol, 147kW']/preceding-sibling::input"));
+		if (!equitmentradiobtn.isSelected()) {
+			equitmentradiobtn.click();
+		}
+	}
+
+	// Test Script 05
+		@Test()
+		public void Testscript_04_JavascriptExecutorcode() throws InterruptedException {
+			driver.get("http://daominhdam.890m.com/");
+			driver.findElement(By.xpath("//button[text()='Click for JS Confirm']")).click();
+			
+		}
+		
 	@AfterClass
 	public void afterClass() {
 		driver.quit();
