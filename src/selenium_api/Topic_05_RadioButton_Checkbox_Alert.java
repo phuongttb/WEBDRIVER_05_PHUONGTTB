@@ -1,7 +1,10 @@
 package selenium_api;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -80,14 +83,64 @@ public class Topic_05_RadioButton_Checkbox_Alert {
 		}
 	}
 
+	// Test Script 04
+	@Test()
+	public void Testscript_04_Acceptalert() throws InterruptedException {
+		driver.get("http://daominhdam.890m.com/");
+		driver.findElement(By.xpath("//button[text()='Click for JS Alert']")).click();
+		Alert alert = driver.switchTo().alert();
+		alert.accept();
+		WebElement results = driver.findElement(By.xpath("//p[@id='result']"));
+		String actualresult = results.getText();
+		String expectedresult = "You clicked an alert successfully";
+		Assert.assertEquals(actualresult, expectedresult);
+
+	}
+
 	// Test Script 05
-		@Test()
-		public void Testscript_04_JavascriptExecutorcode() throws InterruptedException {
-			driver.get("http://daominhdam.890m.com/");
-			driver.findElement(By.xpath("//button[text()='Click for JS Confirm']")).click();
-			
-		}
-		
+	@Test()
+	public void Testscript_05_Cancelalert() throws InterruptedException {
+		driver.get("http://daominhdam.890m.com/");
+		driver.findElement(By.xpath("//button[text()='Click for JS Confirm']")).click();
+		Alert alert = driver.switchTo().alert();
+		alert.dismiss();
+		WebElement results = driver.findElement(By.xpath("//p[@id='result']"));
+		String actualresult = results.getText();
+		String expectedresult = "You clicked: Cancel";
+		Assert.assertEquals(actualresult, expectedresult);
+
+	}
+
+	// Test Script 06
+	@Test()
+	@Parameters({"name" })
+	public void Testscript_06_InputText(String name) throws InterruptedException {
+		driver.get("http://daominhdam.890m.com/");
+		driver.findElement(By.xpath("//button[text()='Click for JS Prompt']")).click();
+		Alert alert = driver.switchTo().alert();
+		alert.sendKeys(name);
+		alert.accept();
+		WebElement results = driver.findElement(By.xpath("//p[@id='result']"));
+		String actualresult = results.getText();
+		String expectedresult = "You entered: " + name;
+		Assert.assertEquals(actualresult, expectedresult);
+
+	}
+
+	// Test Script 07
+	@Test()
+	public void Testscript_07_LoginVerifymessage() throws InterruptedException {
+		driver.get("http://admin:admin@the-internet.herokuapp.com/basic_auth");
+	
+		Assert.assertTrue(driver.findElement(By.xpath("//p[text()='Congratulations! You must have the proper credentials.']")).isDisplayed());
+
+	}
+
+	public String getHTML5ValidationMessage(WebElement element) {
+		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+		return (String) jsExecutor.executeScript("return arguments[0].validationMessage;", element);
+	}
+
 	@AfterClass
 	public void afterClass() {
 		driver.quit();
