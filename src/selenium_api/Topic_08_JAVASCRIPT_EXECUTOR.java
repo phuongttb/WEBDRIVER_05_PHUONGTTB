@@ -1,11 +1,8 @@
 package selenium_api;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +11,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class Topic_08_JAVASCRIPT_EXECUTOR {
@@ -82,59 +78,83 @@ public class Topic_08_JAVASCRIPT_EXECUTOR {
 		WebElement wishlist = driver.findElement(By.xpath("//tr[text()='WISHLIST_CNT']/following-sibling::td"));
 		Assert.assertTrue(wishlist.isDisplayed());
 		highlightElement(driver.findElement(By.xpath("//tr[text()='WISHLIST_CNT']/following-sibling::td")));
-		
-		/*Step 10 - Navigate tới domain: http://demo.guru99.com/v4/  (Sử dụng JE)
-			Verify domain sau khi navigate = demo.guru99.com*/
-		
+
+		/*
+		 * Step 10 - Navigate tới domain: http://demo.guru99.com/v4/ (Sử dụng JE) Verify
+		 * domain sau khi navigate = demo.guru99.com
+		 */
+
 		navigateToUrlByJS("http://demo.guru99.com/v4/");
 		String domainv4 = (String) executeForBrowser("return document.domain");
 		Assert.assertEquals(domainv4, "http://demo.guru99.com/v4/");
-		
-	}
-	
-	    /*Test Script 02
-		Step 01 - Truy cập vào trang: https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_input_disabled
-		Step 02 - Remove thuộc tính disabled của field Last name
-		Switch qua iframe nếu có
-		Step 03 - Sendkey vào field Last name
-		Eg. Automation Testing
-		Step 04 - Click Submit button
-		Step 05 - Verify dữ liệu sau khi submit chứa đoạn text đã fill trong field Lastname (Automation Testing)*/
-		@Test()
-		public void Testscript_02_Remove_attribute() throws InterruptedException {
-			
-			driver.get("https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_input_disabled");
-			WebElement iframe = driver.findElement(By.xpath("//iframe[@id='iframeResult']"));
-			driver.switchTo().frame(iframe);
-			WebElement lastName = driver.findElement(By.xpath("//input[@name='lname']"));
-			removeAttributeInDOM(lastName, "disabled");
-			lastName.sendKeys("phuongttb");
-			driver.findElement(By.xpath("//input[@value='Submit']")).click();
-			
-			WebElement result = driver.findElement(By.xpath("//div[contains(text(),'phuongttb')]"));
-			Assert.assertTrue(result.isDisplayed());
-			
-		}
-		@Test()
-		public void Testscript_03_CreateanAccount() throws InterruptedException {
-			String firstname ="phuong" , middlename="tran" ,lastname="phuongttb" ,email_address="phuong@gmail.com",password="123456",confirmation="123456";
-			driver.get("http://live.guru99.com/");
-			WebElement accountlink = driver.findElement(By.xpath("//a[text()='My Account']"));
-			clickToElementByJS(accountlink);
-			WebElement createanacc= driver.findElement(By.xpath("//a[text()='Create an Account']/following-sibling::span"));
-			clickToElementByJS(createanacc);
-			WebElement firstnametextbox=driver.findElement(By.xpath(""));
-			sendkeyToElementByJS(firstnametextbox,firstname);
-			WebElement middlenametextbox=driver.findElement(By.xpath(""));
-			sendkeyToElementByJS(middlenametextbox,middlename);
-			WebElement lastnametextbox=driver.findElement(By.xpath(""));
-			sendkeyToElementByJS(lastnametextbox,lastname);
-			WebElement email_addresstextbox=driver.findElement(By.xpath(""));
-			sendkeyToElementByJS(email_addresstextbox,email_address);
-			WebElement passwordtextbox=driver.findElement(By.xpath(""));
-			sendkeyToElementByJS(passwordtextbox,password);
-		}
 
+	}
+
+	/*
+	 * Test Script 02 Step 01 - Truy cập vào trang:
+	 * https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_input_disabled Step
+	 * 02 - Remove thuộc tính disabled của field Last name Switch qua iframe nếu có
+	 * Step 03 - Sendkey vào field Last name Eg. Automation Testing Step 04 - Click
+	 * Submit button Step 05 - Verify dữ liệu sau khi submit chứa đoạn text đã fill
+	 * trong field Lastname (Automation Testing)
+	 */
+	@Test()
+	public void Testscript_02_Remove_attribute() throws InterruptedException {
+
+		driver.get("https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_input_disabled");
+		WebElement iframe = driver.findElement(By.xpath("//iframe[@id='iframeResult']"));
+		driver.switchTo().frame(iframe);
+		WebElement lastName = driver.findElement(By.xpath("//input[@name='lname']"));
+		removeAttributeInDOM(lastName, "disabled");
+		lastName.sendKeys("phuongttb");
+		driver.findElement(By.xpath("//input[@value='Submit']")).click();
+
+		WebElement result = driver.findElement(By.xpath("//div[contains(text(),'phuongttb')]"));
+		Assert.assertTrue(result.isDisplayed());
+
+	}
+
+	@Test()
+	public void Testscript_03_CreateanAccount() throws InterruptedException {
+		String firstname = "phuong", middlename = "tran", lastname = "phuongttb", password = "123456",
+				passwordconfirm = "123456";
+		driver.get("http://live.guru99.com/");
+		WebElement accountlink = driver.findElement(By.xpath("//a[text()='My Account']"));
+		clickToElementByJS(accountlink);
+		WebElement createanacc = driver.findElement(By.xpath("//span[contains(text(),'Create an Account')]"));
+		clickToElementByJS(createanacc);
+		WebElement firstnametextbox = driver.findElement(By.xpath("//*[@id='firstname']"));
+		sendkeyToElementByJS(firstnametextbox, firstname);
+		WebElement middlenametextbox = driver.findElement(By.xpath("//*[@id='middlename']"));
+		sendkeyToElementByJS(middlenametextbox, middlename);
+		WebElement lastnametextbox = driver.findElement(By.xpath("//*[@id='lastname']"));
+		sendkeyToElementByJS(lastnametextbox, lastname);
+		WebElement email_addresstextbox = driver.findElement(By.xpath("//*[@id='email_address']"));
+		Random randomGenerator = new Random();
+		int randomInt = randomGenerator.nextInt(1000);
+		email_addresstextbox.sendKeys(firstname + randomInt + "@gmail.com");
+
+		WebElement passwordtextbox = driver.findElement(By.xpath("//*[@id='password']"));
+		sendkeyToElementByJS(passwordtextbox, password);
+		WebElement confirmpasss = driver.findElement(By.xpath("//*[@id='confirmation']"));
+		sendkeyToElementByJS(confirmpasss, passwordconfirm);
+		WebElement checkbox = driver.findElement(By.xpath("//*[@id='is_subscribed']"));
+		checkbox.click();
+		WebElement regbtn = driver.findElement(By.xpath("//span[contains(text(),'Register')]"));
+		clickToElementByJS(regbtn);
+
+		WebElement accountclick = driver.findElement(By.xpath("//span[contains(text(),'Account')][1]"));
+		clickToElementByJS(accountclick);
+		Assert.assertTrue(driver
+				.findElement(By.xpath("//span[contains(text(),'Thank you for registering with Main Website Store.')]"))
+				.isDisplayed());
+		WebElement logout = driver.findElement(By.xpath("//a[contains(text(),'Log Out')]"));
+		clickToElementByJS(logout);
+		
+		navigateToUrlByJS("http://demo.guru99.com/");
+		String domainv4 = (String) executeForBrowser("return document.domain");
+		Assert.assertEquals(domainv4, "http://demo.guru99.com/");
+	}
 
 	public void highlightElement(WebElement element) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
