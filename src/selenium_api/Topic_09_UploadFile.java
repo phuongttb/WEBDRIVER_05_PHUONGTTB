@@ -1,5 +1,6 @@
 package selenium_api;
 
+import java.awt.datatransfer.StringSelection;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -14,6 +15,12 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import com.sun.glass.events.KeyEvent;
+
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.Toolkit;
 
 public class Topic_09_UploadFile {
 
@@ -43,7 +50,7 @@ public class Topic_09_UploadFile {
 	}
 
 	// Test Script 01
-	@Test(enabled = false)
+	@Test()
 	public void Testscript_01_UploadFileSendkey() throws InterruptedException {
 		driver.get("http://blueimp.github.com/jQuery-File-Upload/");
 		WebElement addfile = driver.findElement(By.xpath("//input[@type='file']"));
@@ -52,7 +59,7 @@ public class Topic_09_UploadFile {
 		
 	}
 
-	@Test(enabled=false)
+	@Test()
 	public void Testscript_02_UploadMultipleFileSendkey() throws InterruptedException {
 		driver.get("http://blueimp.github.com/jQuery-File-Upload/");
 		String filename[] = { fileName, fileName1, fileName2 };
@@ -87,13 +94,43 @@ public class Topic_09_UploadFile {
 	
 	// Upload nhieu file cung mot luc
 		@Test()
-		public void Testscript_03_UploadFileByAutoIT() throws InterruptedException {
+		public void Testscript_03_UploadFileByAutoIT() throws InterruptedException, AWTException {
 			driver.get("http://blueimp.github.com/jQuery-File-Upload/");
-			WebElement addfile = driver.findElement(By.xpath("//input[@type='file']"));
-			addfile.sendKeys(filePath +"\n"+ fileName1 +"\n"+ fileName2);
-			Thread.sleep(5000);
+			//Specify the file location with extension
+			StringSelection select = new StringSelection(filePath);
+
+			//Copy to clipboard
+			Toolkit.getDefaultToolkit().getSystemClipboard().setContents(select, null);
+
+			//Click
+			WebElement addFiles = driver.findElement(By.cssSelector(".fileinput-button"));
+			addFiles.click();
+
+			Robot robot = new Robot();
+			Thread.sleep(1000);
+
+			// Nhan phim Enter
+			robot.keyPress(KeyEvent.VK_ENTER);
+			// Nha phim Enter
+			robot.keyRelease(KeyEvent.VK_ENTER);
+
+			// Nhan phim Ctrl V
+			robot.keyPress(KeyEvent.VK_CONTROL);
+			robot.keyPress(KeyEvent.VK_V);
+
+			// Nha phim Ctrl V
+			robot.keyRelease(KeyEvent.VK_CONTROL);
+			robot.keyRelease(KeyEvent.VK_V);
+			Thread.sleep(1000);
+
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
 			
+			WebElement loadedFiles = driver.findElement(By.xpath("//p[@class='name' and text()='" + fileName + "']"));
+			Assert.assertTrue(loadedFiles.isDisplayed());
 		}
+		
+	
 	private int randomNumber() {
 		Random random = new Random();
 		int number = random.nextInt(999999);

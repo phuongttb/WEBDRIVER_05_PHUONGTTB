@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Parameterization Test Suite]">
-  <test name="Testing Parameterization(failed)">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
     <classes>
-      <class name="selenium_api.Topic02_ExpathLocator">
+      <class name="selenium_api.Topic_09_UploadFile">
         <methods>
-          <include name="TC_05_Register" invocation-numbers="0"/>
           <include name="afterClass"/>
+          <include name="Testscript_02_UploadMultipleFileSendkey"/>
           <include name="beforeClass"/>
         </methods>
-      </class> <!-- selenium_api.Topic02_ExpathLocator -->
+      </class> <!-- selenium_api.Topic_09_UploadFile -->
     </classes>
-  </test> <!-- Testing Parameterization(failed) -->
-</suite> <!-- Failed suite [Parameterization Test Suite] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->
