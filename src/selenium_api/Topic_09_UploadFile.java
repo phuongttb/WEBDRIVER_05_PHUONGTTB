@@ -94,7 +94,7 @@ public class Topic_09_UploadFile {
 	
 	// Upload nhieu file cung mot luc
 		@Test()
-		public void Testscript_03_UploadFileByAutoIT() throws InterruptedException, AWTException {
+		public void Testscript_03_UploadFileByRobot() throws InterruptedException, AWTException {
 			driver.get("http://blueimp.github.com/jQuery-File-Upload/");
 			//Specify the file location with extension
 			StringSelection select = new StringSelection(filePath);
@@ -129,7 +129,12 @@ public class Topic_09_UploadFile {
 			WebElement loadedFiles = driver.findElement(By.xpath("//p[@class='name' and text()='" + fileName + "']"));
 			Assert.assertTrue(loadedFiles.isDisplayed());
 		}
-		
+		// Upload nhieu file cung mot luc
+				@Test()
+				public void Testscript_04_AutoIT() throws InterruptedException, AWTException {
+					
+				}
+				
 	
 	private int randomNumber() {
 		Random random = new Random();
